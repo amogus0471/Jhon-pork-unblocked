@@ -5,13 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jhon Pork's Classroom</title>
 <meta name="description" content="Course catalog and lesson modules.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161616'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Arial Black,sans-serif' fill='%23F7F4E8' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
+<div class="scrim" id="scrim" data-open="false"></div>
+
+<aside class="sidebar" id="sidebar" data-open="false" aria-label="Lessons">
+  <div class="sidebar-head">
+    <span class="sidebar-title">Lessons</span>
+    <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close">&times;</button>
+  </div>
+  <div class="sidebar-list" id="sidebarList"></div>
+  <div class="sidebar-foot">
+    <a href="legal.html">Notices &amp; takedown</a><br>
+    <span>Press <strong>`</strong> to return to your assignment.</span>
+  </div>
+</aside>
+
 <header class="masthead">
   <div class="masthead-inner">
+    <button class="hamburger" id="hamburger" type="button" aria-label="Open lessons" aria-expanded="false"><span></span></button>
     <a class="brand" href="index.html">
       <span class="brand-mark">JP</span>
       <span>
@@ -20,8 +36,6 @@
       </span>
     </a>
     <nav class="navlinks">
-      <a class="navlink" href="index.html" aria-current="page">Catalog</a>
-      <a class="navlink" href="index.html#lessons">Lessons</a>
       <a class="navlink" href="settings.html">Preferences</a>
     </nav>
   </div>
@@ -37,25 +51,12 @@
 
 <section class="hero dotgrid-soft">
   <div class="shell">
-    <p class="eyebrow">Semester catalog &middot; Self-paced</p>
-    <h1 class="display display-xl">Study hard.<br>Study harder.</h1>
-    <p class="lede">Every module in the course catalog, ready to run in the browser. No sign-in, no downloads, no waiting.</p>
-    <div class="row" style="margin-top:26px">
-      <a class="btn" href="#catalog">Browse the catalog</a>
-      <a class="btn btn-ghost" style="color:#fff;border-color:#fff" href="#how">How this works</a>
-    </div>
+    <h1 class="display display-xl">Jhon Pork's<br>Classroom</h1>
   </div>
 </section>
 
 <main class="section" id="catalog">
   <div class="shell">
-    <div class="spread section-head">
-      <div>
-        <p class="eyebrow mt-0">Course catalog</p>
-        <h2 class="display display-lg">Pick your module.</h2>
-      </div>
-      <span class="chip chip-lesson" id="count">Loading</span>
-    </div>
 
     <div class="toolbar">
       <label class="search">
@@ -68,44 +69,25 @@
       <button class="lessonbtn" id="hideDownBtn" type="button" aria-pressed="false">Hide unavailable</button>
     </div>
 
-    <div class="lessonbar" id="lessonbar" role="group" aria-label="Filter by lesson"></div>
+    <div class="shelf-head">
+      <h2 class="display display-lg" id="shelfTitle">Popular now</h2>
+      <span class="chip chip-lesson" id="count">Loading</span>
+    </div>
 
     <div class="grid" id="grid"></div>
     <div class="empty hidden" id="empty">No modules match that search.</div>
+
+    <div class="loadmore-wrap" id="loadmoreWrap">
+      <button class="btn" id="loadmore" type="button">Show all modules</button>
+    </div>
     <div id="sentinel" style="height:1px"></div>
   </div>
 </main>
 
-<section class="section section-alt" id="how">
-  <div class="shell">
-    <div class="section-head">
-      <p class="eyebrow mt-0">Orientation</p>
-      <h2 class="display display-lg">Three things<br>worth knowing.</h2>
-    </div>
-    <div class="steps">
-      <div class="card step">
-        <div class="step-num">01</div>
-        <h3 class="display display-md">Everything runs here</h3>
-        <p class="muted">Modules marked <span class="chip chip-verified">Verified</span> are stored on this site and need nothing external to load.</p>
-      </div>
-      <div class="card step">
-        <div class="step-num">02</div>
-        <h3 class="display display-md">Some load upstream</h3>
-        <p class="muted">Modules marked <span class="chip chip-remote">Hosted</span> still pull from another host, so they can break if that host disappears.</p>
-      </div>
-      <div class="card step">
-        <div class="step-num">03</div>
-        <h3 class="display display-md">The escape key</h3>
-        <p class="muted">Press <strong>`</strong> anywhere to cut audio instantly and switch to your assignment. Press it again to come back.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer class="footer">
   <div class="shell spread">
     <span>Jhon Pork's Classroom &middot; independent study portal</span>
-    <span class="muted" id="buildinfo"></span>
+    <span><a href="legal.html">Notices &amp; takedown</a></span>
   </div>
 </footer>
 
@@ -114,9 +96,11 @@
   import { initPanic } from "./assets/js/panic.js";
   import { restoreCloak } from "./assets/js/cloak.js";
   import { initPresence } from "./assets/js/presence.js";
+  import { initSidebar } from "./assets/js/sidebar.js";
 
   restoreCloak();
   initPanic();
+  initSidebar();
   initCatalog();
   initPresence();
 </script>

@@ -245,7 +245,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/1v1lol/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "cl1v1lol.html",
@@ -257,7 +256,8 @@
     "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json",
     "https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-app.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "1v1tennis",
@@ -347,7 +347,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/2048/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 5,
    "source": "cl2048.html",
@@ -358,7 +357,9 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true,
+   "art": "games/2048/tile.png"
   },
   {
    "slug": "234playergame",
@@ -681,7 +682,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/8ballclassic/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "cl8ballclassic.html",
@@ -692,7 +692,9 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true,
+   "art": "games/8ballclassic/tile.png"
   },
   {
    "slug": "8ballpool",
@@ -701,7 +703,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/8ballpool/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "cl8ballpool.html",
@@ -711,7 +712,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/illusionTBA/React-Ruffle@f37551ff7c55cc61002445a0f1e334742f6832e4/public/swf/8BallPool.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "9007199254740992",
@@ -1448,7 +1450,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/ahoysurvival/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clahoysurvival.html",
@@ -1459,7 +1460,8 @@
     "https://cdn.jsdelivr.net/gh/gertdoro/UnityExplorer@e6b59708ba479552b77ff6fd7ff5b73885db6279/lib/Ahoy/UnityLoaderahoy.js",
     "https://cdn.jsdelivr.net/gh/gertdoro/UnityExplorer@e6b59708ba479552b77ff6fd7ff5b73885db6279/lib/Ahoy/Ahoy_WebGL3.json"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "ai",
@@ -2063,7 +2065,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/angry-birdsspace/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clangry-birdsspace.html",
@@ -2073,7 +2074,9 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@7dd38b236213c7cd2d21b69a61a14d557c65a539/9v0mpNE1tWMdOM.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true,
+   "art": "games/angry-birdsspace/tile.png"
   },
   {
    "slug": "angrybirds",
@@ -2503,7 +2506,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/archesspelago/index.html",
-   "art": null,
+   "art": "games/archesspelago/tile.png",
    "status": "remote-fallback",
    "sizeKB": 7,
    "source": "clarchesspelago.html",
@@ -2514,7 +2517,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "archimedesclient",
@@ -3341,7 +3345,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/backyardsoccer/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clbackyardsoccer.html",
@@ -3353,7 +3356,8 @@
     "https://cdn.jsdelivr.net/gh/Abdess/retroarch_system@5f96368f6dbad5851cdb16a5041fefec4bdcd305/Sony%20-%20PlayStation/scph5501.bin",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "baconmaydie",
@@ -4098,7 +4102,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/basketballlegends/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 0,
    "source": "clbasketballlegends.html",
@@ -4107,7 +4110,8 @@
    "upstream": [
     "https://cdn.jsdelivr.net/gh/faralong/test@main/basketballlegendss.html"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "basketballfrvr",
@@ -4679,7 +4683,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/bigflappytowertinysquare/index.html",
-   "art": null,
+   "art": "games/bigflappytowertinysquare/tile.png",
    "status": "remote-fallback",
    "sizeKB": 1,
    "source": "clbigflappytowertinysquare.html",
@@ -4690,7 +4694,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "bigicetowertinysquare",
@@ -5208,7 +5213,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/blockysnakes/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clblockysnakes.html",
@@ -5219,7 +5223,8 @@
     "https://cdn.jsdelivr.net/gh/malpig/HTML-Games-V2@c80f20e7b02c5a026c9fede3366477ff7efa628c/blocky-snakes/UnityLoader.js",
     "https://cdn.jsdelivr.net/gh/malpig/HTML-Games-V2@c80f20e7b02c5a026c9fede3366477ff7efa628c/blocky-snakes/build.json"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "blood",
@@ -5289,7 +5294,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/bloons/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clbloons.html",
@@ -5299,7 +5303,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/Stinkalistic/UGS@main/SWFs/bloons.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "bloons2",
@@ -5424,7 +5429,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/bloons-td6scratch/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 11,
    "source": "clbloonsTD6scratch.html",
@@ -5435,7 +5439,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "bloonspp1",
@@ -5524,7 +5529,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/bloxorz/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clbloxorz.html",
@@ -5534,7 +5538,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/illusionTBA/React-Ruffle@f37551ff7c55cc61002445a0f1e334742f6832e4/public/swf/Bloxors.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "blumgiracers",
@@ -6242,13 +6247,13 @@
    "tags": [],
    "engine": "html5",
    "src": "games/btd1/index.html",
-   "art": null,
    "status": "vendored",
    "sizeKB": 91,
    "source": "clBTD1.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "btd5",
@@ -6567,7 +6572,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/burgertime/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clburgertime.html",
@@ -6578,7 +6582,8 @@
     "https://cdn.jsdelivr.net/gh/Deformed-steve/emujsgames@main/burgertime.nes",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "burgerandfrights",
@@ -6587,7 +6592,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/burgerandfrights/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 15,
    "source": "clburgerandfrights.html",
@@ -6597,7 +6601,8 @@
     "https://cdn.jsdelivr.net/gh/st39/sdk@main/api.js",
     "https://cdn.jsdelivr.net/gh/7nightz/selenitee@f7612ed1599a748d84fe5cbde422ad0062a971d0/semag/burgerandfrights/images/title.png"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "burritobison",
@@ -7428,7 +7433,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/celestemariodx/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clcelestemariodx.html",
@@ -7439,7 +7443,8 @@
     "https://cdn.jsdelivr.net/gh/ap-math-class/exams@main/nes/Celeste%20Mario%20DELUXE.7z",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "celias-stupid-romhack",
@@ -7687,7 +7692,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/chess/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clchess.html",
@@ -7697,7 +7701,8 @@
     "https://cdn.jsdelivr.net/gh/AlbertKraus/maui@2ff9d96543fae94d4e239304d8d39f6ac137a380/src/Controls/src/Dat/462874.dat",
     "https://cdn.jsdelivr.net/gh/zhit73/wafedit@d04643423eb15794748adbb8921f8a3ee3f41437/wasm/waflash-player.min.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "chessclassic",
@@ -8845,7 +8850,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/contra/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clcontra.html",
@@ -8857,7 +8861,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "contra3",
@@ -8866,7 +8871,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/contra3/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clcontra3.html",
@@ -8877,7 +8881,8 @@
     "https://cdn.jsdelivr.net/gh/Stinkalistic/UGS@main/ROMs/contra3.zip",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "contraforce",
@@ -8906,7 +8911,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/cookie-clicker/index.html",
-   "art": null,
+   "art": "games/cookie-clicker/tile.png",
    "status": "remote-fallback",
    "sizeKB": 16,
    "source": "clcookie-clicker.html",
@@ -8918,7 +8923,8 @@
     "https://cdn.jsdelivr.net/gh/UGBONTOP/UGB001.github.io.cookieclicker/base64.js",
     "https://cdn.jsdelivr.net/gh/UGBONTOP/UGB001.github.io.cookieclicker/style.css"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "cookieclicker",
@@ -8927,7 +8933,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/cookieclicker/index.html",
-   "art": null,
+   "art": "games/cookieclicker/tile.png",
    "status": "remote-fallback",
    "sizeKB": 19,
    "source": "clcookieclicker.html",
@@ -8938,7 +8944,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "cookieclickergood",
@@ -10368,7 +10375,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/dbzsuperwarriorssonic/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "cldbzsuperwarriorssonic.html",
@@ -10379,7 +10385,8 @@
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@a88e75c3f001ced220c5eb2cb039adfecbbb5561/Dragon%20Ball%20Z%20-%20Supersonic%20Warriors%20(USA",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "dbzwarriors2",
@@ -11244,7 +11251,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/dinodudes/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "cldinodudes.html",
@@ -11256,7 +11262,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "dinorun",
@@ -13140,13 +13147,13 @@
    "tags": [],
    "engine": "html5",
    "src": "games/eaglercraft152/index.html",
-   "art": null,
    "status": "vendored",
    "sizeKB": 16136,
    "source": "cleaglercraft152.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "eaglercraftlite",
@@ -13197,13 +13204,13 @@
    "tags": [],
    "engine": "html5",
    "src": "games/eaglercraft-alpha-126-offline/index.html",
-   "art": null,
    "status": "vendored",
    "sizeKB": 8420,
    "source": "clEaglercraft-Alpha-126-Offline.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "eaglercraft-beta-1-3-offline",
@@ -14031,7 +14038,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/escaperoad/index.html",
-   "art": null,
+   "art": "games/escaperoad/tile.png",
    "status": "remote-fallback",
    "sizeKB": 9,
    "source": "clescaperoad.html",
@@ -14042,7 +14049,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "escaperoad-2",
@@ -14051,7 +14059,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/escaperoad-2/index.html",
-   "art": null,
+   "art": "games/escaperoad-2/tile.png",
    "status": "remote-fallback",
    "sizeKB": 2820,
    "source": "clescaperoad-2.html",
@@ -14060,7 +14068,8 @@
    "upstream": [
     "https://cdn.jsdelivr.net/gh/st39/sdk@main/api.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "escaperoad3",
@@ -14370,7 +14379,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/extremerun3d/index.html",
-   "art": null,
+   "art": "games/extremerun3d/tile.png",
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clextremerun3d.html",
@@ -14381,7 +14390,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "factoryballs",
@@ -15436,7 +15446,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/fifainternationalsoccer/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clFIFAinternationalsoccer.html",
@@ -15448,7 +15457,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "fifaroadtoworldcup98",
@@ -15923,7 +15933,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/fireboyandwatergirl2/index.html",
-   "art": null,
+   "art": "games/fireboyandwatergirl2/tile.png",
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clfireboyandwatergirl2.html",
@@ -15934,7 +15944,8 @@
     "https://cdn.jsdelivr.net/gh/AlgebraHelper/AlgebraHelper@8e5a5b1d2b14aaf641c716af947c57609f52cf55/games/html5/fireboy-and-watergirl-2/play/bower_components/requirejs/require.js",
     "https://cdn.jsdelivr.net/gh/bobydob/godotpack@137b954a7a2d8e0a28efe82a778000c02bcc1481/side/faw2/faw2.min.js?v="
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "fireboyandwatergirl3",
@@ -15943,7 +15954,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/fireboyandwatergirl3/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clfireboyandwatergirl3.html",
@@ -15954,7 +15964,8 @@
     "https://cdn.jsdelivr.net/gh/Edward358-AI/HTML5-games@3c35856e44aea5d93ebe781cb1af84570dd8512c/html5/fireboy-and-watergirl-3/play/version.js",
     "https://cdn.jsdelivr.net/gh/bobydob/godotpack@eee6707129e6b8de0315fa9a296cec67aa16f6d8/side/faw3/faw3.min.js?v="
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "fireboyandwatergirl6",
@@ -16421,7 +16432,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/fnaf3remastered/index.html",
-   "art": null,
+   "art": "games/fnaf3remastered/tile.png",
    "status": "remote-fallback",
    "sizeKB": 5,
    "source": "clfnaf3remastered.html",
@@ -16433,7 +16444,8 @@
     "https://cdn.jsdelivr.net/gh/shayderrr/idk@87ff56487f7a13506c0596be9bc341c81f48e991/fnaf3remastered/bridge.js",
     "https://cdn.jsdelivr.net/gh/shayderrr/idk@87ff56487f7a13506c0596be9bc341c81f48e991/fnaf3remastered/"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "fnaf4",
@@ -16522,7 +16534,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/fnafshooter/index.html",
-   "art": null,
+   "art": "games/fnafshooter/tile.png",
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clfnafshooter.html",
@@ -16533,7 +16545,8 @@
     "https://cdn.jsdelivr.net/gh/googleuserclassroomcontent/wassat@main/TemplateData/style.css",
     "https://cdn.jsdelivr.net/gh/googleuserclassroomcontent/wassat@main/Build"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "fnafsl",
@@ -17342,7 +17355,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/fnfgodot/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clfnfgodot.html",
@@ -17354,7 +17366,8 @@
     "https://cdn.jsdelivr.net/gh/shayderrr/newports@6923d8d3c6272e81d2d9d54440d4e2450c47e89b/fnf/index.js",
     "https://cdn.jsdelivr.net/gh/shayderrr/newports@6923d8d3c6272e81d2d9d54440d4e2450c47e89b/fnf/"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "fnfgoldenapple",
@@ -19080,7 +19093,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/galaga/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clgalaga.html",
@@ -19092,7 +19104,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "gameandwatchcollection",
@@ -19421,7 +19434,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/getawayshootout/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clgetawayshootout.html",
@@ -19432,7 +19444,8 @@
     "https://cdn.jsdelivr.net/gh/lordsofdank/GetawayShootout@9e99964c43638346680fce45d3b296408da61181/Build/UnityLoader.js",
     "https://cdn.jsdelivr.net/gh/lordsofdank/GetawayShootout@9e99964c43638346680fce45d3b296408da61181/Build/GetawayShootoutTwoPlayerGamesOrg.json"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "getontop",
@@ -20067,13 +20080,13 @@
    "tags": [],
    "engine": "html5",
    "src": "games/googledino/index.html",
-   "art": null,
    "status": "vendored",
    "sizeKB": 116,
    "source": "clgoogledino.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "gorescriptclassic",
@@ -20303,7 +20316,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/grannycreepy/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 31,
    "source": "clgrannycreepy.html",
@@ -20314,7 +20326,8 @@
     "https://cdn.jsdelivr.net/gh/shayderrr/portsv2@main/grannycreepy/Build",
     "https://cdn.jsdelivr.net/gh/shayderrr/portsv2@main/grannycreepy/background.png"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "grannynightmare",
@@ -20345,7 +20358,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/grannyy/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 9,
    "source": "clgrannyy.html",
@@ -20357,7 +20369,8 @@
     "https://cdn.jsdelivr.net/gh/testamalame/sef@main/sedk.js",
     "https://cdn.jsdelivr.net/gh/gru6nny/ohd@main/background.png"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "granturismo",
@@ -21359,7 +21372,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/happywheels/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clhappywheels.html",
@@ -21369,7 +21381,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@97af31ec5b7d4858652ff2304c42200dc472fc7d/HappyWheels.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "happyroom",
@@ -25072,7 +25085,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/learn-to-fly3debug/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clLearnToFly3Debug.html",
@@ -25082,7 +25094,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.5.0-nightly.2026.8.1/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/ap-math-class/exams@main/swf/learn-to-fly-3%20(old"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "learntofly",
@@ -26089,13 +26102,14 @@
    "tags": [],
    "engine": "html5",
    "src": "games/madalinstuntcars/index.html",
-   "art": null,
+   "art": "games/madalinstuntcars/tile.png",
    "status": "vendored",
    "sizeKB": 93,
    "source": "clmadalinstuntcars.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "madalinstuntcarsgood",
@@ -26104,7 +26118,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/madalinstuntcarsgood/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 1,
    "source": "clmadalinstuntcarsgood.html",
@@ -26116,7 +26129,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "madalinstuntcarsmultiplayerfixed",
@@ -28410,7 +28424,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/metal-sonic-hyperdrive/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clMetalSonicHyperdrive.html",
@@ -28422,7 +28435,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "metalgear",
@@ -28929,7 +28943,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/minecraft1-8-8/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clminecraft1-8-8.html",
@@ -28940,7 +28953,8 @@
     "https://cdn.jsdelivr.net/gh/bubbls/loltheygotbannedfromjsdelivr@38f40924ae70b843f3d4d0a5dc3d6ba13ca3a461/fix-webm-duration.js",
     "https://cdn.jsdelivr.net/gh/bubbls/loltheygotbannedfromjsdelivr@38f40924ae70b843f3d4d0a5dc3d6ba13ca3a461/assets.epk"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "minecraftshooter",
@@ -29009,13 +29023,13 @@
    "tags": [],
    "engine": "html5",
    "src": "games/minecrafttowerdefense/index.html",
-   "art": null,
    "status": "vendored",
    "sizeKB": 90,
    "source": "MINECRAFTTOWERDEFENSE.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "mineshooter",
@@ -29044,7 +29058,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/minesweeperplus/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 6,
    "source": "clminesweeperplus.html",
@@ -29055,7 +29068,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "minhero",
@@ -31256,7 +31270,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/nightcatsurvival/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clnightcatsurvival.html",
@@ -31265,7 +31278,8 @@
    "upstream": [
     "https://cdn.jsdelivr.net/gh/bodrumkat/wahawh@main/1.xml"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "nightfire",
@@ -32538,7 +32552,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/ovo2/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clovo2.html",
@@ -32550,7 +32563,8 @@
     "https://cdn.jsdelivr.net/gh/ov464534asa4rb/786132@main/icons/icon-512.png",
     "https://cdn.jsdelivr.net/gh/ov464534asa4rb/786132@main/style.css"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "ovodimensions",
@@ -32601,7 +32615,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/pacman/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clpacman.html",
@@ -32613,7 +32626,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "pacmanworld3",
@@ -32622,7 +32636,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/pacmanworld3/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clpacmanworld3.html",
@@ -32633,7 +32646,8 @@
     "https://cdn.jsdelivr.net/gh/bubbls/brogoofyahhmangogotonablacklistskullwiltingrose@main/",
     "https://cdn.jsdelivr.net/gh/bubbls/brogoofyahhmangogotonablacklistskullwiltingrose@main/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "pacmana",
@@ -35699,7 +35713,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/pokemoncrystal/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clpokemoncrystal.html",
@@ -35710,7 +35723,8 @@
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@13a9d8a407ade461b08ed56b0a683f22ae1aef96/Pokemon%20-%20Crystal%20Version%20(USA",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "pok-mon-emerald-rush-edition",
@@ -35761,7 +35775,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/pokemonfirered/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clpokemonfirered.html",
@@ -35772,7 +35785,8 @@
     "https://cdn.jsdelivr.net/gh/7363272/ESPG@7aa7497bb64f4448ed3159d1fde86c7e82e6312d/games/pokemonfirered/rom.gba",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "pokemongold",
@@ -41100,7 +41114,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/run3/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clrun3.html",
@@ -41111,7 +41124,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "runfromwitheredfox",
@@ -43313,7 +43327,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/slope2player/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clslope2player.html",
@@ -43325,7 +43338,8 @@
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@b7188745eb03a3bde3183ff3494d0713ac5ad6c5/slope%202%20player/Build/WebGL2Players%20v1.1.data.unityweb",
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@b7188745eb03a3bde3183ff3494d0713ac5ad6c5/slope%202%20player/Build/WebGL2Players%20v1.1.framework.js.unityweb"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "slope3",
@@ -43334,7 +43348,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/slope3/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 9,
    "source": "clslope3.html",
@@ -43345,7 +43358,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "slopeplus",
@@ -43999,13 +44013,14 @@
    "tags": [],
    "engine": "html5",
    "src": "games/snakeis/index.html",
-   "art": null,
+   "art": "games/snakeis/tile.png",
    "status": "vendored",
    "sizeKB": 92,
    "source": "clsnakeis.html",
    "note": "No external references detected",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "snakelike",
@@ -44497,7 +44512,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/solitaire/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clsolitaire.html",
@@ -44507,7 +44521,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@bf808b75a3d6ee341eac40ac6836486cacec3c4e/solitaire.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "solstice",
@@ -48625,7 +48640,7 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/supersmashflash/index.html",
-   "art": null,
+   "art": "games/supersmashflash/tile.png",
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clsupersmashflash.html",
@@ -48635,7 +48650,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashflash/SuperSmash.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "supersmashflash0-8",
@@ -48664,7 +48680,6 @@
    "tags": [],
    "engine": "ruffle",
    "src": "games/supersmashflash2/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 4,
    "source": "clsupersmashflash2.html",
@@ -48674,7 +48689,8 @@
     "https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js",
     "https://cdn.jsdelivr.net/gh/KrMattsson/azurenaming@0d162ac92aa303b9fe7c30988877cb5025c7183a/Pages/ssf2-0.4a.swf"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "supersmashflash2butdifversion",
@@ -50664,7 +50680,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/templerun2/index.html",
-   "art": null,
+   "art": "games/templerun2/tile.png",
    "status": "remote-fallback",
    "sizeKB": 1,
    "source": "cltemplerun2.html",
@@ -50675,7 +50691,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "templeofboom",
@@ -50723,7 +50740,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/tengentetris/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "cltengentetris.html",
@@ -50734,7 +50750,8 @@
     "https://cdn.jsdelivr.net/gh/ap-math-class/exams@main/nes/Tetris",
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "tennisnes",
@@ -50877,7 +50894,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/tetris/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "cltetris.html",
@@ -50889,7 +50905,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "tetris64",
@@ -53285,7 +53302,7 @@
    "tags": [],
    "engine": "html5",
    "src": "games/undertalelb/index.html",
-   "art": null,
+   "art": "games/undertalelb/tile.png",
    "status": "remote-fallback",
    "sizeKB": 5,
    "source": "clundertalelb.html",
@@ -53296,7 +53313,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "undertaler",
@@ -53305,7 +53323,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/undertaler/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 10,
    "source": "clundertaler.html",
@@ -53316,7 +53333,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "undertaleyellow",
@@ -53365,13 +53383,13 @@
    "tags": [],
    "engine": "html5",
    "src": "games/unfairmario-2/game.swf",
-   "art": null,
    "status": "vendored",
    "sizeKB": 1641,
    "source": "unfairmario.swf",
    "note": "Bare Flash file, needs a Ruffle wrapper",
    "checked": "2026-09-07",
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "unfairmarioworkquestionmark",
@@ -53904,7 +53922,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/vex4/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 1,
    "source": "clvex4.html",
@@ -53916,7 +53933,8 @@
     "https://cdn.jsdelivr.net/gh/bobydob/JSEngine@0f8467a67ec67e4119180e5d2bef3946fe223c8c/build/v4/v4.min.js",
     "https://cdn.jsdelivr.net/gh/bobydob/JSEngine@0f8467a67ec67e4119180e5d2bef3946fe223c8c/build/v4/version.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "vex5",
@@ -53925,7 +53943,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/vex5/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 2,
    "source": "clvex5.html",
@@ -53937,7 +53954,8 @@
     "https://cdn.jsdelivr.net/gh/bobydob/JSEngine@c9697620dde0cb058865163e27b83208dff2505b/build/v5/v5.min.js",
     "https://cdn.jsdelivr.net/gh/bobydob/JSEngine@0f8467a67ec67e4119180e5d2bef3946fe223c8c/build/v4/version.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "vex6",
@@ -55895,7 +55913,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/zelda2thelegendoflink/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 3,
    "source": "clzelda2thelegendoflink.html",
@@ -55907,7 +55924,8 @@
     "https://cdn.jsdelivr.net/gh/bubblfan/emu@master/loader.js",
     "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js"
    ],
-   "healthy": true
+   "healthy": true,
+   "popular": true
   },
   {
    "slug": "zelda-indigoch2",
@@ -55937,7 +55955,6 @@
    "tags": [],
    "engine": "html5",
    "src": "games/zeldaminishcap/index.html",
-   "art": null,
    "status": "remote-fallback",
    "sizeKB": 0,
    "source": "clzeldaminishcap.html",
@@ -55948,7 +55965,8 @@
    ],
    "healthy": true,
    "healthUnknown": true,
-   "healthNote": "upstream is a directory, not verifiable"
+   "healthNote": "upstream is a directory, not verifiable",
+   "popular": true
   },
   {
    "slug": "zenword",

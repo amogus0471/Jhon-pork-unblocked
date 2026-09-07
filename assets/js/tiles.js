@@ -5,11 +5,14 @@
  * image weight, and it reads as one designed system rather than a scrape.
  * Drop a real image at games/<slug>/tile.png and set "art" to override. */
 
+/* Warm-leaning set so generated tiles sit with the amber/cream shell instead
+   of fighting it. Each pair is [mark, ground] and both are dark-on-light so
+   the ink stroke reads at thumbnail size. */
 const PALETTES = [
-  ["#4F46E5", "#C7D2FE"], ["#E11D48", "#FECDD3"], ["#F59E0B", "#FDE68A"],
-  ["#16A34A", "#BBF7D0"], ["#0EA5E9", "#BAE6FD"], ["#9333EA", "#E9D5FF"],
-  ["#EA580C", "#FED7AA"], ["#0D9488", "#99F6E4"], ["#DB2777", "#FBCFE8"],
-  ["#65A30D", "#D9F99D"], ["#7C3AED", "#DDD6FE"], ["#DC2626", "#FECACA"],
+  ["#E4572E", "#FFE0D2"], ["#D7263D", "#FFD6DC"], ["#F49D37", "#FFE9C7"],
+  ["#C6980A", "#FFF0BF"], ["#6A8E23", "#E6F2C8"], ["#2E8B74", "#CFF0E6"],
+  ["#1F7A8C", "#CDE9EF"], ["#4A5FC1", "#DCE2FB"], ["#8B5FBF", "#EBDDF7"],
+  ["#C2477A", "#FBD9E8"], ["#B5651D", "#FCE3CB"], ["#3F7D58", "#D6EEDF"],
 ];
 
 const INK = "#161616";
