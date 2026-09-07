@@ -12,6 +12,7 @@ const state = {
   shown: 0,
   q: "",
   lesson: "All",
+  hideDown: false,
 };
 
 const els = {};
@@ -24,6 +25,7 @@ const STATUS_CHIP = {
 };
 
 function matches(g) {
+  if (state.hideDown && g.healthy === false) return false;
   if (state.lesson !== "All" && g.lesson !== state.lesson) return false;
   if (!state.q) return true;
   const q = state.q;
@@ -43,8 +45,13 @@ function applyFilter() {
 }
 
 function tileHTML(g) {
-  const playable = g.status === "vendored" || g.status === "remote-fallback";
-  const [chipClass, chipLabel] = STATUS_CHIP[g.status] || ["chip-review", "Unknown"];
+  // healthy === false means the health check actually reached the upstream and
+  // it was gone. Undefined means never checked; unknown means not conclusive.
+  const dead = g.healthy === false;
+  const playable = !dead && (g.status === "vendored" || g.status === "remote-fallback");
+  const [chipClass, chipLabel] = dead
+    ? ["chip-review", "Down"]
+    : (STATUS_CHIP[g.status] || ["chip-review", "Unknown"]);
   const art = g.art
     ? `<img src="${esc(g.art)}" alt="" loading="lazy" decoding="async">`
     : tileSVG(g);
@@ -63,7 +70,7 @@ function tileHTML(g) {
 
   return playable
     ? `<a class="tile" href="play.html?id=${encodeURIComponent(g.slug)}">${inner}</a>`
-    : `<div class="tile" aria-disabled="true" style="opacity:.55">${inner}</div>`;
+    : `<div class="tile" aria-disabled="true" title="${esc(g.healthNote || g.note || "Unavailable")}" style="opacity:.5">${inner}</div>`;
 }
 
 function renderMore() {
@@ -137,6 +144,15 @@ export async function initCatalog() {
       applyFilter();
     }, 120);
   });
+
+  const hideBtn = document.getElementById("hideDownBtn");
+  if (hideBtn) {
+    hideBtn.addEventListener("click", () => {
+      state.hideDown = !state.hideDown;
+      hideBtn.setAttribute("aria-pressed", String(state.hideDown));
+      applyFilter();
+    });
+  }
 
   new IntersectionObserver((entries) => {
     if (entries.some((e) => e.isIntersecting)) renderMore();
