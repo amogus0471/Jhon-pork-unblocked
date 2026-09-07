@@ -3,3 +3,9 @@ node_modules/
 Thumbs.db
 desktop.ini
 *.log
+
+# build scratch
+.batches.json
+.vendored.txt
+.cur.txt
+.pushbatches.sh

@@ -52,10 +52,18 @@ async function checkRemote(g) {
   const local = checkLocal(g);
   if (!local.ok) return local;
   const refs = (g.upstream || []).filter((u) => /^https?:\/\//.test(u));
-  if (!refs.length) return { ok: true, why: "no upstream recorded" };
+  if (!refs.length) return { ok: true, why: "no upstream recorded", unknown: true };
+
+  /* jsDelivr answers 403 for a directory path even when the files inside it
+     are fine, so probing a bare directory proves nothing. Only URLs naming an
+     actual file are conclusive; the rest are reported unknown, not broken. */
+  const files = refs.filter((u) => /\/[^\/?#]+\.[a-z0-9]{2,6}(\?|#|$)/i.test(u));
+  if (!files.length) {
+    return { ok: true, why: "upstream is a directory, not verifiable", unknown: true };
+  }
 
   // One dead dependency is enough to break the module.
-  for (const url of refs.slice(0, 2)) {
+  for (const url of files.slice(0, 2)) {
     const r = await probe(url);
     if (!r.ok) return { ok: false, why: "upstream " + r.why };
   }
@@ -91,14 +99,17 @@ const broken = [];
 targets.forEach((g, n) => {
   const r = results[n];
   g.healthy = r.ok;
+  if (r.unknown) g.healthUnknown = true;
   g.healthNote = r.why || undefined;
   g.checked = new Date().toISOString().slice(0, 10);
   if (!r.ok) broken.push({ title: g.title, slug: g.slug, why: r.why, status: g.status });
 });
 
-const okCount = results.filter((r) => r.ok).length;
+const okCount = results.filter((r) => r.ok && !r.unknown).length;
+const unknownCount = results.filter((r) => r.unknown).length;
 console.log("\nhealthy " + okCount + " / " + targets.length);
-console.log("broken  " + broken.length);
+console.log("unverifiable " + unknownCount + "  (upstream is a directory - not conclusive)");
+console.log("broken       " + broken.length);
 
 const byReason = new Map();
 for (const b of broken) byReason.set(b.why, (byReason.get(b.why) || 0) + 1);
