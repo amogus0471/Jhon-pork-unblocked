@@ -3,104 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jhon Pork's Classroom</title>
-<meta name="description" content="Course catalog and lesson modules.">
+<title>Classroom Resources</title>
+<meta name="description" content="Classroom resource portal.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161616'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Arial Black,sans-serif' fill='%23F7F4E8' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238B5CF6'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Arial,sans-serif' font-weight='bold' fill='%23fff' text-anchor='middle'%3EJP%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
 <div class="scrim" id="scrim" data-open="false"></div>
 
-<aside class="sidebar" id="sidebar" data-open="false" aria-label="Lessons">
-  <div class="sidebar-head">
-    <span class="sidebar-title">Lessons</span>
-    <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close">&times;</button>
-  </div>
-  <div class="sidebar-list" id="sidebarList"></div>
-  <div class="sidebar-foot">
-    <a href="legal.html">Notices &amp; takedown</a><br>
-    <span>Press <strong>`</strong> to return to your assignment.</span>
-  </div>
-</aside>
+<div class="layout">
 
-<header class="masthead">
-  <div class="masthead-inner">
-    <button class="hamburger" id="hamburger" type="button" aria-label="Open lessons" aria-expanded="false"><span></span></button>
-    <a class="brand" href="index.html">
-      <span class="brand-mark">JP</span>
+  <aside class="rail" id="rail" data-open="false">
+    <a class="rail-brand" href="index.html">
+      <span class="rail-mark">JP</span>
       <span>
-        <span class="brand-name">Jhon Pork's Classroom</span>
-        <span class="brand-sub">Independent Study Portal</span>
+        <span class="rail-name">Classroom</span>
+        <span class="rail-sub">Resources</span>
       </span>
     </a>
-    <nav class="navlinks">
-      <a class="navlink" href="settings.html">Preferences</a>
-    </nav>
-  </div>
-</header>
 
-<div class="utilitybar">
-  <div class="utilitybar-inner">
-    <span class="hl">Independent study portal</span>
-    <span>Press <strong>`</strong> at any time to return to your assignment</span>
-    <span id="presence" class="hidden"></span>
-  </div>
-</div>
+    <div class="rail-section">Browse</div>
+    <a class="rail-link" href="index.html" aria-current="page"><span>Home</span></a>
+    <button class="rail-link" id="railAll" type="button"><span>All Resources</span><span class="rail-count" id="railAllCount"></span></button>
 
-<section class="hero dotgrid-soft">
-  <div class="shell">
-    <h1 class="display display-xl">Jhon Pork's<br>Classroom</h1>
-  </div>
-</section>
+    <div class="rail-section">Lessons</div>
+    <div id="railLessons"></div>
 
-<main class="section" id="catalog">
-  <div class="shell">
+    <div class="rail-section">More</div>
+    <a class="rail-link" href="settings.html"><span>Preferences</span></a>
+    <a class="rail-link" href="legal.html"><span>Notices</span></a>
+  </aside>
 
-    <div class="toolbar">
-      <label class="search">
-        <span class="sr-only">Search the syllabus</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+  <div class="main">
+
+    <div class="topbar">
+      <button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+      <label class="searchbox">
+        <span class="sr-only">Search</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
         </svg>
-        <input id="search" type="search" placeholder="Search the syllabus..." autocomplete="off">
+        <input id="search" type="search" placeholder="Search resources..." autocomplete="off">
       </label>
-      <button class="lessonbtn" id="hideDownBtn" type="button" aria-pressed="false">Hide unavailable</button>
+      <span class="topbar-spacer"></span>
+      <button class="tbtn" id="hideDownBtn" type="button" aria-pressed="false">Hide broken</button>
+      <span class="chip hidden" id="presence"></span>
     </div>
 
-    <div class="shelf-head">
-      <h2 class="display display-lg" id="shelfTitle">Popular now</h2>
-      <span class="chip chip-lesson" id="count">Loading</span>
-    </div>
+    <div class="inner">
 
-    <div class="grid" id="grid"></div>
-    <div class="empty hidden" id="empty">No modules match that search.</div>
+      <div class="banner">
+        <h1>Classroom Resources</h1>
+        <p>Browse the collection by topic. Press <strong>`</strong> at any time to return to your assignment.</p>
+      </div>
 
-    <div class="loadmore-wrap" id="loadmoreWrap">
-      <button class="btn" id="loadmore" type="button">Show all modules</button>
+      <div id="rows"></div>
+
+      <div class="empty hidden" id="empty">Nothing matches that search.</div>
+
+      <div class="loadwrap hidden" id="loadwrap">
+        <button class="btn" id="loadmore" type="button">Show everything</button>
+      </div>
+      <div id="sentinel" style="height:1px"></div>
+
+      <div class="footer">
+        <span>Classroom Resources &middot; independent study portal</span>
+        <span><a href="legal.html">Notices &amp; takedown</a></span>
+      </div>
+
     </div>
-    <div id="sentinel" style="height:1px"></div>
   </div>
-</main>
-
-<footer class="footer">
-  <div class="shell spread">
-    <span>Jhon Pork's Classroom &middot; independent study portal</span>
-    <span><a href="legal.html">Notices &amp; takedown</a></span>
-  </div>
-</footer>
+</div>
 
 <script type="module">
   import { initCatalog } from "./assets/js/catalog.js";
   import { initPanic } from "./assets/js/panic.js";
   import { restoreCloak } from "./assets/js/cloak.js";
   import { initPresence } from "./assets/js/presence.js";
-  import { initSidebar } from "./assets/js/sidebar.js";
+  import { initRail } from "./assets/js/sidebar.js";
 
   restoreCloak();
   initPanic();
-  initSidebar();
+  initRail();
   initCatalog();
   initPresence();
 </script>

@@ -8,14 +8,16 @@
 /* Warm-leaning set so generated tiles sit with the amber/cream shell instead
    of fighting it. Each pair is [mark, ground] and both are dark-on-light so
    the ink stroke reads at thumbnail size. */
+/* Tiles sit on a dark ground, so each pair is [mark, ground] with a mid-tone
+   ground rather than a pale one - pale tiles glare against the dark shell. */
 const PALETTES = [
-  ["#E4572E", "#FFE0D2"], ["#D7263D", "#FFD6DC"], ["#F49D37", "#FFE9C7"],
-  ["#C6980A", "#FFF0BF"], ["#6A8E23", "#E6F2C8"], ["#2E8B74", "#CFF0E6"],
-  ["#1F7A8C", "#CDE9EF"], ["#4A5FC1", "#DCE2FB"], ["#8B5FBF", "#EBDDF7"],
-  ["#C2477A", "#FBD9E8"], ["#B5651D", "#FCE3CB"], ["#3F7D58", "#D6EEDF"],
+  ["#FDE68A", "#7C2D12"], ["#FCA5A5", "#7F1D1D"], ["#FDBA74", "#7C2D12"],
+  ["#BEF264", "#365314"], ["#6EE7B7", "#064E3B"], ["#67E8F9", "#164E63"],
+  ["#93C5FD", "#1E3A8A"], ["#C4B5FD", "#4C1D95"], ["#F0ABFC", "#701A75"],
+  ["#FDA4AF", "#881337"], ["#A5B4FC", "#312E81"], ["#5EEAD4", "#134E4A"],
 ];
 
-const INK = "#161616";
+const INK = "#0B0A10";
 
 function hash(str) {
   let h = 2166136261;

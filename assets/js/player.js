@@ -23,10 +23,10 @@ function mount(game) {
 
 function chipFor(status) {
   const map = {
-    "vendored":        ["chip-verified", "Verified - hosted here"],
-    "remote-fallback": ["chip-remote",   "Hosted upstream"],
+    "vendored":        ["chip-ok",   "Stored here"],
+    "remote-fallback": ["chip-warn", "Hosted upstream"],
   };
-  return map[status] || ["chip-review", "Unavailable"];
+  return map[status] || ["chip-down", "Unavailable"];
 }
 
 export async function initPlayer() {
@@ -58,14 +58,14 @@ export async function initPlayer() {
   }
 
   current = game;
-  document.title = game.title + " - Jhon Pork's Classroom";
+  document.title = game.title + " - Classroom Resources";
   titleEl.textContent = game.title;
 
   const [cls, label] = chipFor(game.status);
   metaEl.innerHTML =
-    `<span class="chip chip-lesson">${esc(game.lesson || "General Studies")}</span>` +
+    `<span class="chip">${esc(game.lesson || "General Studies")}</span>` +
     `<span class="chip ${cls}">${esc(label)}</span>` +
-    (game.engine === "ruffle" ? `<span class="chip chip-flash">Flash</span>` : "");
+    (game.engine === "ruffle" ? `<span class="chip chip-warn">Flash</span>` : "");
 
   if (!game.src) {
     stage.innerHTML = "";

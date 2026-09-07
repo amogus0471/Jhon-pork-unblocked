@@ -1,42 +1,35 @@
-/* sidebar.js - slide-out lesson nav.
+/* sidebar.js - the left rail.
  *
- * Open/close mechanics only. The lesson list itself is rendered by catalog.js,
- * which is the module that actually has the counts. */
+ * On wide screens the rail is always visible and this does nothing. Below
+ * 900px it becomes a slide-over, and these handlers drive it. The lesson list
+ * inside is rendered by catalog.js, which owns the counts. */
 
 let open = false;
-let els = {};
+const els = {};
 
-function set(state) {
-  open = state;
-  els.sidebar.dataset.open = String(state);
-  els.scrim.dataset.open = String(state);
-  els.hamburger.setAttribute("aria-expanded", String(state));
-  document.body.style.overflow = state ? "hidden" : "";
-  if (state) {
-    // move focus in so the panel is keyboard-reachable
-    (els.sidebar.querySelector(".sidebar-item") || els.close).focus({ preventScroll: true });
-  } else {
-    els.hamburger.focus({ preventScroll: true });
-  }
+function set(next) {
+  open = next;
+  els.rail.dataset.open = String(next);
+  els.scrim.dataset.open = String(next);
+  els.menubtn.setAttribute("aria-expanded", String(next));
+  document.body.style.overflow = next ? "hidden" : "";
 }
 
-export function closeSidebar() { if (open) set(false); }
-export function openSidebar() { if (!open) set(true); }
+export function closeRail() { if (open) set(false); }
+export function openRail() { if (!open) set(true); }
 
-export function initSidebar() {
-  els.sidebar   = document.getElementById("sidebar");
-  els.scrim     = document.getElementById("scrim");
-  els.hamburger = document.getElementById("hamburger");
-  els.close     = document.getElementById("sidebarClose");
-  if (!els.sidebar || !els.hamburger) return;
+export function initRail() {
+  els.rail    = document.getElementById("rail");
+  els.scrim   = document.getElementById("scrim");
+  els.menubtn = document.getElementById("menubtn");
+  if (!els.rail || !els.menubtn) return;
 
-  els.hamburger.addEventListener("click", () => set(!open));
-  els.close.addEventListener("click", () => set(false));
+  els.menubtn.addEventListener("click", () => set(!open));
   els.scrim.addEventListener("click", () => set(false));
 
   addEventListener("keydown", (ev) => {
-    // Escape closes the panel, but only when it is the thing on screen -
-    // it must not fight the player's fullscreen exit.
+    // Only swallow Escape while the slide-over is actually showing, so it
+    // never competes with the player's fullscreen exit.
     if (ev.key === "Escape" && open) {
       ev.stopPropagation();
       set(false);

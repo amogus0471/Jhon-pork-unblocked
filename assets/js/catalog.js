@@ -1,14 +1,14 @@
-/* catalog.js - featured shelf, search, lesson filter, progressive grid.
+/* catalog.js - row-based browsing.
  *
- * The front page shows a curated featured set rather than all ~2800 modules:
- * a wall of every entry is slower and harder to use than a shelf of the ones
- * worth playing. Searching or picking a lesson switches to the full catalog
- * automatically, since at that point you are looking for something specific. */
+ * Home shows a Popular strip plus one strip per lesson, which is far easier
+ * to scan than a wall of ~2800 tiles. Searching, picking a lesson, or hitting
+ * "Show everything" switches to a flat grid that fills in progressively. */
 
 import { tileSVG, esc } from "./tiles.js";
-import { closeSidebar } from "./sidebar.js";
+import { closeRail } from "./sidebar.js";
 
-const BATCH = 60;
+const BATCH = 72;
+const PER_ROW = 14;
 
 const state = {
   all: [],
@@ -17,120 +17,184 @@ const state = {
   q: "",
   lesson: "All",
   hideDown: false,
-  featuredOnly: true,
+  onlyHot: false,
+  mode: "home",
 };
 
 const els = {};
 
-const STATUS_CHIP = {
-  "vendored":           ["chip-verified", "Verified"],
-  "remote-fallback":    ["chip-remote",   "Hosted"],
-  "oversized-deferred": ["chip-review",   "Unavailable"],
-  "needs-review":       ["chip-review",   "Review"],
-};
-
-function matches(g) {
-  if (state.hideDown && g.healthy === false) return false;
-  if (state.featuredOnly && !g.popular) return false;
-  if (state.lesson !== "All" && g.lesson !== state.lesson) return false;
-  if (!state.q) return true;
-  const q = state.q;
-  return g.title.toLowerCase().includes(q) ||
-         (g.lesson || "").toLowerCase().includes(q) ||
-         (g.tags || []).some((t) => t.toLowerCase().includes(q));
-}
-
-function applyFilter() {
-  state.filtered = state.all.filter(matches);
-  state.shown = 0;
-  els.grid.innerHTML = "";
-  els.count.textContent = state.filtered.length.toLocaleString() +
-    (state.filtered.length === 1 ? " module" : " modules");
-  els.empty.classList.toggle("hidden", state.filtered.length > 0);
-
-  els.shelfTitle.textContent = state.q
-    ? "Search results"
-    : state.lesson !== "All"
-      ? state.lesson
-      : state.featuredOnly ? "Popular now" : "All modules";
-
-  // The button only makes sense while a curated subset is on screen.
-  els.loadmoreWrap.classList.toggle("hidden",
-    !state.featuredOnly || !!state.q || state.lesson !== "All");
-
-  renderMore();
+function playable(g) {
+  return g.healthy !== false && (g.status === "vendored" || g.status === "remote-fallback");
 }
 
 function tileHTML(g) {
   const dead = g.healthy === false;
-  const playable = !dead && (g.status === "vendored" || g.status === "remote-fallback");
-  const [chipClass, chipLabel] = dead
-    ? ["chip-review", "Down"]
-    : (STATUS_CHIP[g.status] || ["chip-review", "Unknown"]);
-
   const art = g.art
     ? `<img src="${esc(g.art)}" alt="" loading="lazy" decoding="async">`
     : tileSVG(g);
-  const flash = g.engine === "ruffle"
-    ? `<span class="sticker sticker-tr">Flash</span>` : "";
 
-  const inner = `
-    <div class="tile-art">${art}</div>
-    ${flash}
-    <div class="tile-body">
-      <span class="tile-title">${esc(g.title)}</span>
-      <span class="tile-meta">
-        <span class="chip ${chipClass}">${chipLabel}</span>
-      </span>
-    </div>`;
+  let flag = "";
+  if (dead) flag = `<span class="flag">Down</span>`;
+  else if (g.popular) flag = `<span class="flag flag-hot">Hot</span>`;
+  else if (g.engine === "ruffle") flag = `<span class="flag flag-flash">Flash</span>`;
+  else if (g.status === "vendored") flag = `<span class="flag flag-local">Local</span>`;
 
-  return playable
+  const inner = flag + `<div class="tile-art">${art}</div><span class="tile-name">${esc(g.title)}</span>`;
+
+  return playable(g)
     ? `<a class="tile" href="play.html?id=${encodeURIComponent(g.slug)}">${inner}</a>`
-    : `<div class="tile" aria-disabled="true" title="${esc(g.healthNote || g.note || "Unavailable")}" style="opacity:.5">${inner}</div>`;
+    : `<div class="tile" aria-disabled="true" title="${esc(g.healthNote || g.note || "Unavailable")}">${inner}</div>`;
 }
 
-function renderMore() {
+function visible(g) {
+  if (state.hideDown && g.healthy === false) return false;
+  return true;
+}
+
+function matchesQuery(g) {
+  if (!state.q) return true;
+  return g.title.toLowerCase().includes(state.q) ||
+         (g.lesson || "").toLowerCase().includes(state.q);
+}
+
+function renderHome() {
+  const pool = state.all.filter(visible);
+  const chunks = [];
+
+  const hot = pool.filter((g) => g.popular);
+  if (hot.length) chunks.push(["Popular now", "__hot", hot]);
+
+  const byLesson = new Map();
+  for (const g of pool) {
+    if (!byLesson.has(g.lesson)) byLesson.set(g.lesson, []);
+    byLesson.get(g.lesson).push(g);
+  }
+  // Biggest lessons first, but the catch-all goes last since it is the least
+  // informative shelf on the page.
+  const ordered = [...byLesson].sort((a, b) => {
+    if (a[0] === "General Studies") return 1;
+    if (b[0] === "General Studies") return -1;
+    return b[1].length - a[1].length;
+  });
+  for (const [name, list] of ordered) chunks.push([name, name, list]);
+
+  els.rows.innerHTML = chunks.map(function (c) {
+    const label = c[0], key = c[1], list = c[2];
+    return `<section>
+      <div class="row-head">
+        <span class="row-title">${esc(label)}</span>
+        <button class="row-more" data-lesson="${esc(key)}" type="button">View more</button>
+        <span class="row-count">${list.length.toLocaleString()}</span>
+      </div>
+      <div class="strip">${list.slice(0, PER_ROW).map(tileHTML).join("")}</div>
+    </section>`;
+  }).join("");
+
+  els.rows.querySelectorAll(".row-more").forEach((b) => {
+    b.addEventListener("click", () => {
+      const k = b.dataset.lesson;
+      if (k === "__hot") { state.lesson = "All"; state.onlyHot = true; }
+      else { state.lesson = k; state.onlyHot = false; }
+      state.mode = "flat";
+      sync(); render();
+      scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  els.empty.classList.add("hidden");
+  els.loadwrap.classList.remove("hidden");
+  els.sentinel.classList.add("hidden");
+}
+
+function renderFlat() {
+  state.filtered = state.all.filter((g) =>
+    visible(g) &&
+    matchesQuery(g) &&
+    (state.lesson === "All" || g.lesson === state.lesson) &&
+    (!state.onlyHot || g.popular)
+  );
+  state.shown = 0;
+
+  const label = state.q ? "Results for " + state.q
+    : state.onlyHot ? "Popular now"
+    : state.lesson !== "All" ? state.lesson
+    : "All resources";
+
+  els.rows.innerHTML = `
+    <div class="row-head">
+      <span class="row-title">${esc(label)}</span>
+      <span class="row-count">${state.filtered.length.toLocaleString()}</span>
+    </div>
+    <div class="grid" id="flatgrid"></div>`;
+
+  els.empty.classList.toggle("hidden", state.filtered.length > 0);
+  els.loadwrap.classList.add("hidden");
+  more();
+}
+
+function more() {
+  const grid = document.getElementById("flatgrid");
+  if (!grid) return;
   const next = state.filtered.slice(state.shown, state.shown + BATCH);
   if (!next.length) { els.sentinel.classList.add("hidden"); return; }
-  els.grid.insertAdjacentHTML("beforeend", next.map(tileHTML).join(""));
+  grid.insertAdjacentHTML("beforeend", next.map(tileHTML).join(""));
   state.shown += next.length;
   els.sentinel.classList.toggle("hidden", state.shown >= state.filtered.length);
 }
 
-function buildSidebar() {
+function render() {
+  if (state.mode === "home" && !state.q) renderHome();
+  else renderFlat();
+  markRail();
+}
+
+function buildRail() {
+  const pool = state.all.filter((g) => g.healthy !== false);
+  els.railAllCount.textContent = pool.length.toLocaleString();
+
   const counts = new Map();
-  for (const g of state.all) {
-    if (g.healthy === false) continue;
-    counts.set(g.lesson, (counts.get(g.lesson) || 0) + 1);
-  }
-  const rows = [["All", state.all.filter((g) => g.healthy !== false).length]]
-    .concat([...counts].sort((a, b) => b[1] - a[1]));
+  for (const g of pool) counts.set(g.lesson, (counts.get(g.lesson) || 0) + 1);
 
-  els.sidebarList.innerHTML = rows.map(([name, n]) => `
-    <button class="sidebar-item" data-lesson="${esc(name)}" aria-pressed="${name === state.lesson}">
-      <span>${esc(name === "All" ? "All modules" : name)}</span>
-      <span class="sidebar-count">${n.toLocaleString()}</span>
-    </button>`).join("");
+  els.railLessons.innerHTML = [...counts]
+    .sort((a, b) => b[1] - a[1])
+    .map(function (c) {
+      return `<button class="rail-link" data-lesson="${esc(c[0])}" type="button" aria-pressed="false">
+        <span>${esc(c[0])}</span><span class="rail-count">${c[1].toLocaleString()}</span>
+      </button>`;
+    }).join("");
 
-  els.sidebarList.addEventListener("click", (ev) => {
-    const btn = ev.target.closest(".sidebar-item");
-    if (!btn) return;
-    state.lesson = btn.dataset.lesson;
-    if (state.lesson !== "All") state.featuredOnly = false;
-    [...els.sidebarList.children].forEach((b) =>
-      b.setAttribute("aria-pressed", String(b === btn)));
-    syncURL();
-    applyFilter();
-    closeSidebar();
+  els.railLessons.addEventListener("click", (ev) => {
+    const b = ev.target.closest(".rail-link");
+    if (!b) return;
+    state.lesson = b.dataset.lesson;
+    state.onlyHot = false;
+    state.mode = "flat";
+    state.q = ""; els.search.value = "";
+    sync(); render(); closeRail();
+    scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  els.railAll.addEventListener("click", () => {
+    state.lesson = "All"; state.onlyHot = false; state.mode = "flat";
+    state.q = ""; els.search.value = "";
+    sync(); render(); closeRail();
     scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
-function syncURL() {
+function markRail() {
+  els.railLessons.querySelectorAll(".rail-link").forEach((b) =>
+    b.setAttribute("aria-pressed",
+      String(state.mode === "flat" && b.dataset.lesson === state.lesson)));
+  els.railAll.setAttribute("aria-pressed",
+    String(state.mode === "flat" && state.lesson === "All" && !state.onlyHot && !state.q));
+}
+
+function sync() {
   const u = new URL(location.href);
   state.q ? u.searchParams.set("q", state.q) : u.searchParams.delete("q");
   state.lesson !== "All" ? u.searchParams.set("lesson", state.lesson) : u.searchParams.delete("lesson");
-  state.featuredOnly ? u.searchParams.delete("all") : u.searchParams.set("all", "1");
+  state.mode === "flat" ? u.searchParams.set("view", "all") : u.searchParams.delete("view");
   history.replaceState(null, "", u);
 }
 
@@ -138,22 +202,19 @@ function readURL() {
   const u = new URL(location.href);
   state.q = (u.searchParams.get("q") || "").toLowerCase();
   state.lesson = u.searchParams.get("lesson") || "All";
-  if (u.searchParams.get("all") === "1" || state.q || state.lesson !== "All") {
-    state.featuredOnly = false;
-  }
-  if (state.q && els.search) els.search.value = state.q;
+  if (state.q || state.lesson !== "All" || u.searchParams.get("view") === "all") state.mode = "flat";
+  if (state.q) els.search.value = state.q;
 }
 
 export async function initCatalog() {
-  els.grid         = document.getElementById("grid");
+  els.rows         = document.getElementById("rows");
   els.search       = document.getElementById("search");
-  els.count        = document.getElementById("count");
   els.empty        = document.getElementById("empty");
   els.sentinel     = document.getElementById("sentinel");
-  els.shelfTitle   = document.getElementById("shelfTitle");
-  els.loadmore     = document.getElementById("loadmore");
-  els.loadmoreWrap = document.getElementById("loadmoreWrap");
-  els.sidebarList  = document.getElementById("sidebarList");
+  els.loadwrap     = document.getElementById("loadwrap");
+  els.railLessons  = document.getElementById("railLessons");
+  els.railAll      = document.getElementById("railAll");
+  els.railAllCount = document.getElementById("railAllCount");
 
   let data;
   try {
@@ -161,44 +222,39 @@ export async function initCatalog() {
     if (!res.ok) throw new Error("HTTP " + res.status);
     data = await res.json();
   } catch (err) {
-    els.grid.innerHTML = `<div class="notice">Could not load the syllabus (${esc(err.message)}). Run <code>node tools/ingest.mjs --build</code>.</div>`;
+    els.rows.innerHTML = `<div class="notice">Could not load the index (${esc(err.message)}). Run <code>node tools/ingest.mjs --build</code>.</div>`;
     return;
   }
 
   state.all = data.games || [];
-  // If nothing is flagged featured, fall back to showing everything rather
-  // than an empty front page.
-  if (!state.all.some((g) => g.popular)) state.featuredOnly = false;
-
   readURL();
-  buildSidebar();
-  applyFilter();
+  buildRail();
+  render();
 
   let t;
   els.search.addEventListener("input", () => {
     clearTimeout(t);
     t = setTimeout(() => {
       state.q = els.search.value.trim().toLowerCase();
-      if (state.q) state.featuredOnly = false;
-      syncURL();
-      applyFilter();
+      state.mode = state.q ? "flat" : "home";
+      if (!state.q) { state.lesson = "All"; state.onlyHot = false; }
+      sync(); render();
     }, 120);
   });
 
-  els.loadmore.addEventListener("click", () => {
-    state.featuredOnly = false;
-    syncURL();
-    applyFilter();
+  document.getElementById("loadmore").addEventListener("click", () => {
+    state.mode = "flat"; state.lesson = "All"; state.onlyHot = false;
+    sync(); render();
+    scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  const hideBtn = document.getElementById("hideDownBtn");
-  hideBtn?.addEventListener("click", () => {
+  const hide = document.getElementById("hideDownBtn");
+  hide.addEventListener("click", () => {
     state.hideDown = !state.hideDown;
-    hideBtn.setAttribute("aria-pressed", String(state.hideDown));
-    applyFilter();
+    hide.setAttribute("aria-pressed", String(state.hideDown));
+    render();
   });
 
-  new IntersectionObserver((entries) => {
-    if (entries.some((e) => e.isIntersecting)) renderMore();
-  }, { rootMargin: "600px" }).observe(els.sentinel);
+  new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) more(); },
+    { rootMargin: "700px" }).observe(els.sentinel);
 }

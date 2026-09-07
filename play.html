@@ -4,93 +4,66 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Module - Jhon Pork's Classroom</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161616'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Arial Black,sans-serif' fill='%23F7F4E8' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+<title>Resource - Classroom Resources</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238B5CF6'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Arial,sans-serif' font-weight='bold' fill='%23fff' text-anchor='middle'%3EJP%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<header class="masthead">
-  <div class="masthead-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">JP</span>
+<div class="main">
+  <div class="topbar">
+    <a class="rail-brand" href="index.html" style="border:0;padding:0;background:none">
+      <span class="rail-mark">JP</span>
       <span>
-        <span class="brand-name">Jhon Pork's Classroom</span>
-        <span class="brand-sub">Independent Study Portal</span>
+        <span class="rail-name">Classroom</span>
+        <span class="rail-sub">Resources</span>
       </span>
     </a>
-    <nav class="navlinks">
-      <a class="navlink" href="index.html">Catalog</a>
-      <a class="navlink" href="settings.html">Preferences</a>
-    </nav>
+    <span class="topbar-spacer"></span>
+    <a class="tbtn" href="index.html">&larr; Back</a>
+    <button class="tbtn" id="reloadBtn" type="button">Restart</button>
+    <button class="tbtn" id="fullscreenBtn" type="button">Fullscreen</button>
   </div>
-</header>
 
-<div class="utilitybar">
-  <div class="utilitybar-inner">
-    <span class="hl">Now studying</span>
-    <span>Press <strong>`</strong> to return to your assignment</span>
-  </div>
-</div>
-
-<main class="section" style="padding-top:30px">
-  <div class="shell">
-
-    <div class="spread section-head">
-      <div>
-        <p class="eyebrow mt-0"><a href="index.html" style="text-decoration:none">&larr; Back to catalog</a></p>
-        <h1 class="display display-lg" id="moduleTitle">Loading module</h1>
-        <div class="tile-meta" id="moduleMeta" style="margin-top:12px"></div>
-      </div>
-      <div class="row">
-        <button class="btn btn-sm" id="reloadBtn" type="button">Restart</button>
-        <button class="btn btn-sm btn-primary" id="fullscreenBtn" type="button">Presentation mode</button>
-      </div>
+  <div class="inner">
+    <div class="playhead">
+      <h1 id="moduleTitle">Loading</h1>
+      <span class="spacer"></span>
+      <span id="moduleMeta"></span>
     </div>
 
     <div class="notice hidden" id="notice" role="status"></div>
 
-    <div class="stage" id="stage" style="margin-top:18px">
-      <div class="empty" style="color:#F7F4E8">Loading...</div>
+    <div class="stage" id="stage" style="margin-top:14px">
+      <div class="empty">Loading...</div>
     </div>
 
-    <p class="muted" style="margin-top:16px;font-size:.85rem">
-      Keyboard input goes to the module while it has focus. Click inside the stage first if a module is not responding to the arrow keys.
+    <p class="muted" style="margin-top:14px;font-size:.84rem">
+      Click inside the frame first if the arrow keys are not reaching the game.
+      Press <strong>`</strong> to return to your assignment.
     </p>
 
-    <section id="discussion" class="hidden" style="margin-top:46px">
-      <div class="section-head">
-        <p class="eyebrow mt-0">Discussion board</p>
-        <h2 class="display display-md">Seminar notes</h2>
-      </div>
-
-      <form id="commentForm" class="card" style="padding:18px;margin-bottom:20px">
-        <div class="field" style="display:flex;flex-direction:column;gap:10px">
-          <input id="commentName" type="text" maxlength="32" placeholder="Name (optional)"
-                 autocomplete="off"
-                 style="padding:10px 14px;font:inherit;font-weight:600;color:var(--ink);background:var(--cream);border:2px solid var(--ink);border-radius:var(--r-pill)">
-          <textarea id="commentText" maxlength="500" rows="3" required
-                    placeholder="Add to the discussion..."
-                    style="padding:12px 14px;font:inherit;color:var(--ink);background:var(--cream);border:2px solid var(--ink);border-radius:var(--r-md);resize:vertical"></textarea>
-          <div class="row">
-            <button class="btn btn-sm btn-primary" type="submit">Post</button>
-            <span class="muted" id="commentStatus" style="font-size:.82rem"></span>
-          </div>
+    <section id="discussion" class="hidden" style="margin-top:44px">
+      <div class="row-head"><span class="row-title">Discussion</span></div>
+      <form id="commentForm" style="display:flex;flex-direction:column;gap:10px;max-width:640px;margin-bottom:18px">
+        <input id="commentName" type="text" maxlength="32" placeholder="Name (optional)" autocomplete="off"
+               style="padding:10px 13px;font:inherit;color:var(--text);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm)">
+        <textarea id="commentText" maxlength="500" rows="3" required placeholder="Add a comment..."
+               style="padding:11px 13px;font:inherit;color:var(--text);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);resize:vertical"></textarea>
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="btn" type="submit">Post</button>
+          <span class="muted" id="commentStatus" style="font-size:.82rem"></span>
         </div>
       </form>
-
       <div id="commentList"></div>
     </section>
 
+    <div class="footer">
+      <span>Classroom Resources</span>
+      <span><a href="legal.html">Notices &amp; takedown</a> &middot; <a href="index.html">Home</a></span>
+    </div>
   </div>
-</main>
-
-<footer class="footer">
-  <div class="shell spread">
-    <span>Jhon Pork's Classroom &middot; independent study portal</span>
-    <span><a href="legal.html" class="muted">Notices &amp; takedown</a> &middot; <a href="index.html" class="muted">Course catalog</a></span>
-  </div>
-</footer>
+</div>
 
 <script type="module">
   import { initPlayer } from "./assets/js/player.js";
