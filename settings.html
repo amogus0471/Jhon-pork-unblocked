@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Preferences - Jhon Pork's Classroom</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161616'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Arial Black,sans-serif' fill='%23F7F4E8' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .field { display:flex; flex-direction:column; gap:8px; margin-bottom:26px; max-width:460px; }
+  .field label { font-weight:800; font-size:.9rem; }
+  .field select, .field input[type=text] {
+    padding:11px 15px; font:inherit; font-weight:600;
+    color:var(--ink); background:var(--paper);
+    border:var(--border) solid var(--ink); border-radius:var(--r-pill);
+  }
+  .field .muted { font-size:.82rem; }
+  .keycap {
+    display:inline-grid; place-items:center; min-width:34px; padding:5px 9px;
+    font-weight:800; background:var(--paper);
+    border:2px solid var(--ink); border-radius:6px; box-shadow:2px 2px 0 var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">JP</span>
+      <span>
+        <span class="brand-name">Jhon Pork's Classroom</span>
+        <span class="brand-sub">Independent Study Portal</span>
+      </span>
+    </a>
+    <nav class="navlinks">
+      <a class="navlink" href="index.html">Catalog</a>
+      <a class="navlink" href="settings.html" aria-current="page">Preferences</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow mt-0">Student preferences</p>
+      <h1 class="display display-lg">Set up your desk.</h1>
+      <p class="lede">Saved in this browser only. Nothing is sent anywhere.</p>
+    </div>
+
+    <div class="card" style="padding:28px; max-width:640px">
+
+      <div class="field">
+        <label for="cloakSel">Tab disguise</label>
+        <select id="cloakSel"></select>
+        <span class="muted">Changes the browser tab title and icon. Generic document styling - set your own wording below if you prefer.</span>
+      </div>
+
+      <div class="field">
+        <label for="cloakCustom">Custom tab title</label>
+        <input type="text" id="cloakCustom" placeholder="e.g. Unit 6 - Lab Report" autocomplete="off">
+        <span class="muted">Leave blank to use the preset above.</span>
+      </div>
+
+      <hr style="border:0;border-top:var(--border) solid var(--ink);margin:26px 0">
+
+      <div class="field">
+        <label for="panicInput">Escape key</label>
+        <div class="row">
+          <span class="keycap" id="keyPreview">`</span>
+          <button class="btn btn-sm" id="panicInput" type="button">Press to change</button>
+        </div>
+        <span class="muted">Cuts audio instantly and switches to your assignment page. Press it again there to come back. Avoid Escape - it collides with fullscreen.</span>
+      </div>
+
+      <div class="field">
+        <label class="row" style="font-weight:800">
+          <input type="checkbox" id="alwaysCloak" style="width:18px;height:18px">
+          Open cloaked by default
+        </label>
+        <span class="muted">Every visit starts on the assignment page until you press the escape key.</span>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <button class="btn btn-primary" id="saveBtn" type="button">Save preferences</button>
+        <span class="chip chip-verified hidden" id="savedChip">Saved</span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell spread">
+    <span>Jhon Pork's Classroom &middot; independent study portal</span>
+    <a href="index.html" class="muted">Course catalog</a>
+  </div>
+</footer>
+
+<script type="module">
+import { PRESETS, currentCloak, saveCloak, restoreCloak } from "./assets/js/cloak.js";
+import { panicKey, setPanicKey, initPanic } from "./assets/js/panic.js";
+
+restoreCloak();
+initPanic();
+
+const sel = document.getElementById("cloakSel");
+const custom = document.getElementById("cloakCustom");
+const keyPreview = document.getElementById("keyPreview");
+const always = document.getElementById("alwaysCloak");
+
+sel.innerHTML = Object.entries(PRESETS)
+  .map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
+
+const cur = currentCloak();
+sel.value = cur.name === "custom" ? "off" : cur.name;
+if (cur.custom) custom.value = cur.custom.title || "";
+keyPreview.textContent = panicKey();
+try { always.checked = localStorage.getItem("jpc.alwaysCloak") === "1"; } catch {}
+
+let capturing = false;
+const btn = document.getElementById("panicInput");
+btn.addEventListener("click", () => {
+  capturing = true;
+  btn.textContent = "Press any key...";
+});
+addEventListener("keydown", (ev) => {
+  if (!capturing) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  capturing = false;
+  setPanicKey(ev.key);
+  keyPreview.textContent = ev.key === " " ? "Space" : ev.key;
+  btn.textContent = "Press to change";
+}, true);
+
+document.getElementById("saveBtn").addEventListener("click", () => {
+  const title = custom.value.trim();
+  if (title) saveCloak("custom", { title, icon: PRESETS[sel.value]?.icon || PRESETS.document.icon });
+  else saveCloak(sel.value, null);
+  try { localStorage.setItem("jpc.alwaysCloak", always.checked ? "1" : "0"); } catch {}
+  const chip = document.getElementById("savedChip");
+  chip.classList.remove("hidden");
+  setTimeout(() => chip.classList.add("hidden"), 1800);
+});
+</script>
+</body>
+</html>
